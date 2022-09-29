@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const { reject } = require('bcrypt/promises')
+const { type } = require('express/lib/response')
 
 const UserSchema = new mongoose.Schema({
     username: {
@@ -10,6 +11,10 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },   
+    roles:{
+        type: [String],
+        enum: ['restrito', 'admin']
     }
 })
 
